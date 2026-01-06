@@ -74,7 +74,7 @@ const CurrencyConverter = () => {
 
         {/* Footer */}
         <div className="footer">
-          <p className="footer-main">🇸🇾 Made with ❤️ for Syria | صُنع بحب لسوريا 🇸🇾</p>
+          <p className="footer-main">Made with ❤️ for Syria | صُنع بحب لسوريا </p>
           <p className="footer-sub">Stay calm, calculate easy | ابقَ هادئاً، احسب بسهولة</p>
         </div>
       </div>
