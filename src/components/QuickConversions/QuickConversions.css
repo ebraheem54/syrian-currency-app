@@ -24,12 +24,28 @@
   color: #4b5563;
   font-weight: 600;
   font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+/* NEW: Examples Note */
+.examples-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fef3c7;
+  color: #92400e;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
 }
 
 .conversions-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .conversion-button {
@@ -105,6 +121,18 @@
   color: #10b981;
 }
 
+/* NEW: Custom Note */
+.custom-note {
+  background: linear-gradient(to right, #dbeafe, #e0e7ff);
+  color: #1e40af;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  border: 2px solid #bfdbfe;
+}
+
 @media (max-width: 768px) {
   .conversions-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -113,5 +141,9 @@
   .old-amount,
   .new-amount {
     font-size: 1.25rem;
+  }
+  
+  .custom-note {
+    font-size: 0.75rem;
   }
 }
