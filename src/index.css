@@ -9,14 +9,46 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Prevent pull-to-refresh on mobile */
+  overscroll-behavior-y: contain;
+  
+  /* Better touch handling */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Global input fixes for mobile */
+input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: none;
+  
+  /* Prevent zoom on iOS - CRITICAL */
+  font-size: 16px !important;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+  display: none;
 }
 
-input[type="number"] {
-  -moz-appearance: textfield;
+/* Prevent double-tap zoom */
+* {
+  touch-action: manipulation;
+}
+
+/* Better button touch */
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Ensure all interactive elements are easily tappable (min 44x44px) */
+button,
+input,
+select,
+textarea {
+  min-height: 44px;
 }

@@ -2,11 +2,31 @@
 <html lang="ar">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta name="theme-color" content="#10b981" />
     <meta name="description" content="Syrian Currency Converter - محول العملة السورية" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <title>محول العملة السورية | Syrian Currency Converter</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Fix iOS input zoom */
+      input[type="number"] {
+        font-size: 16px !important;
+      }
+      
+      /* Prevent double-tap zoom */
+      * {
+        touch-action: manipulation;
+      }
+      
+      /* Ensure inputs are tappable */
+      input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

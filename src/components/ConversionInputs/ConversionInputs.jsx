@@ -25,12 +25,17 @@ const ConversionInputs = ({ oldAmount, newAmount, onOldChange, onNewChange, onCl
           <div className="input-wrapper old-input">
             <input
               type="number"
+              inputMode="decimal"
               value={oldAmount}
               onChange={onOldChange}
               placeholder="اكتب أي مبلغ..."
               className="currency-input"
               step="any"
               min="0"
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="off"
+              spellCheck="false"
             />
             <span className="currency-symbol old-symbol">ل.س</span>
           </div>
@@ -49,12 +54,17 @@ const ConversionInputs = ({ oldAmount, newAmount, onOldChange, onNewChange, onCl
           <div className="input-wrapper new-input">
             <input
               type="number"
+              inputMode="decimal"
               value={newAmount}
               onChange={onNewChange}
               placeholder="اكتب أي مبلغ..."
               className="currency-input"
               step="any"
               min="0"
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="off"
+              spellCheck="false"
             />
             <span className="currency-symbol new-symbol">ل.س</span>
           </div>
@@ -64,7 +74,7 @@ const ConversionInputs = ({ oldAmount, newAmount, onOldChange, onNewChange, onCl
 
       {/* Clear Button */}
       <div className="clear-button-container">
-        <button onClick={onClear} className="clear-button">
+        <button onClick={onClear} className="clear-button" type="button">
           <RefreshCw className="w-6 h-6" />
           مسح الكل - Clear All
         </button>

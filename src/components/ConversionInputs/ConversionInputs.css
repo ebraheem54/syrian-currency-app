@@ -1,5 +1,5 @@
 .conversion-card {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 1.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -8,7 +8,6 @@
   border: 2px solid #f3f4f6;
 }
 
-/* NEW: Info Banner */
 .info-banner {
   display: flex;
   align-items: center;
@@ -35,7 +34,7 @@
 
 .inputs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
 }
@@ -79,6 +78,8 @@
 .input-wrapper {
   position: relative;
   transition: all 0.3s;
+  /* Ensure it's above other elements for touch */
+  z-index: 10;
 }
 
 .input-wrapper::before {
@@ -89,6 +90,8 @@
   opacity: 0.2;
   filter: blur(40px);
   transition: opacity 0.3s;
+  /* Behind the input */
+  z-index: -1;
 }
 
 .input-wrapper:hover::before {
@@ -105,20 +108,41 @@
 
 .currency-input {
   width: 100%;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 900;
   text-align: center;
-  padding: 2rem 1.5rem;
+  padding: 1.75rem 3.5rem 1.75rem 1.5rem;
   border: 4px solid;
   border-radius: 1rem;
   outline: none;
   transition: all 0.3s;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  /* Mobile fixes */
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: none;
+  touch-action: manipulation;
+  
+  /* Prevent zoom on iOS */
+  font-size: 16px;
+  
+  /* Ensure it's tappable */
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* Remove spinner arrows */
+.currency-input::-webkit-inner-spin-button,
+.currency-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .currency-input::placeholder {
   color: #9ca3af;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
 }
 
@@ -129,7 +153,12 @@
 
 .old-input .currency-input:focus {
   border-color: #f43f5e;
-  box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.2);
+  box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.3);
+  background: white;
+}
+
+.old-input .currency-input:active {
+  border-color: #f43f5e;
   background: white;
 }
 
@@ -140,18 +169,25 @@
 
 .new-input .currency-input:focus {
   border-color: #10b981;
-  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
+  background: white;
+}
+
+.new-input .currency-input:active {
+  border-color: #10b981;
   background: white;
 }
 
 .currency-symbol {
   position: absolute;
-  left: 1.5rem;
+  right: 1.5rem;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   font-weight: 900;
   opacity: 0.5;
+  pointer-events: none;
+  z-index: 11;
 }
 
 .old-symbol {
@@ -162,7 +198,6 @@
   color: #10b981;
 }
 
-/* NEW: Input Hint */
 .input-hint {
   text-align: center;
   color: #6b7280;
@@ -191,6 +226,7 @@
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  touch-action: manipulation;
 }
 
 .clear-button:hover {
@@ -202,19 +238,41 @@
   transform: scale(0.95);
 }
 
+/* Mobile optimizations */
 @media (max-width: 768px) {
-  .currency-input {
-    font-size: 2rem;
+  .conversion-card {
     padding: 1.5rem 1rem;
   }
   
+  .currency-input {
+    font-size: 16px;
+    padding: 1.5rem 3rem 1.5rem 1rem;
+  }
+  
   .currency-input::placeholder {
-    font-size: 1.125rem;
+    font-size: 14px;
+  }
+  
+  .currency-symbol {
+    font-size: 1.25rem;
+    right: 1rem;
   }
   
   .info-banner {
     font-size: 0.875rem;
     padding: 0.75rem 1rem;
     flex-wrap: wrap;
+  }
+  
+  .inputs-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .currency-input {
+    font-size: 18px;
   }
 }
